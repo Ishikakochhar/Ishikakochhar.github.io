@@ -250,7 +250,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10%;
+    padding: 120px 10% 60px; /* Added top padding to prevent navbar overlap */
     position: relative;
     overflow: hidden;
 }
