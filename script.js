@@ -59,19 +59,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Selene Chatbot Logic ---
     const chatData = {
-        greeting: "Hi there! I'm Selene, Ishika's virtual assistant. How can I help you today?",
-        options: [
-            { id: "who", text: "Who is Ishika?" },
-            { id: "skills", text: "What are her skills?" },
-            { id: "latest", text: "Latest project?" },
-            { id: "contact", text: "How to contact her?" }
-        ],
-        responses: {
-            who: "Ishika is a B.Tech Computer Science student at BML Munjal University, graduating in 2026. She's passionate about building intelligent, scalable solutions using AI and modern web frameworks!",
-            skills: "She specializes in Python, Flutter, JavaScript, and HTML/CSS. Her real superpower is AI & Machine Learning, using tools like TensorFlow, CrewAI, and Gemini to build smart applications.",
-            latest: "Her latest major project is the 'Disease Diet Generator', an AI-powered web app that creates personalized diet plans using RAG and CrewAI! You can check it out in her Projects section.",
-            contact: "You can reach out to her via email at kochharishika@gmail.com, or connect with her on LinkedIn (linkedin.com/in/IshikaKochhar)."
+        main_menu: {
+            text: "Hi there! I'm Selene, Ishika's virtual assistant. 🌙 How can I help you today?",
+            options: [
+                { id: "who", text: "Who is Ishika?", next: "main_menu" },
+                { id: "skills", text: "What are her skills?", next: "main_menu" },
+                { id: "projects", text: "What are her projects?", next: "projects_menu" },
+                { id: "contact", text: "How to contact her?", next: "main_menu" }
+            ]
+        },
+        projects_menu: {
+            text: "She has built some amazing things! Which project would you like to know more about?",
+            options: [
+                { id: "diet", text: "Disease Diet Generator", next: "projects_menu" },
+                { id: "interview", text: "Interview Buddy", next: "projects_menu" },
+                { id: "devmentor", text: "Devmentor", next: "projects_menu" },
+                { id: "staycoza", text: "StayCoza App", next: "projects_menu" },
+                { id: "back", text: "⬅️ Go Back", next: "main_menu" }
+            ]
         }
+    };
+
+    const responses = {
+        who: "Ishika is a B.Tech Computer Science student at BML Munjal University, graduating in 2026. She's passionate about building intelligent, scalable solutions using AI and modern web frameworks!",
+        skills: "She specializes in Python, Flutter, JavaScript, and HTML/CSS. Her real superpower is AI & Machine Learning, using tools like TensorFlow, CrewAI, and Gemini to build smart applications.",
+        contact: "You can reach out to her via email at kochharishika@gmail.com, or connect with her on LinkedIn (linkedin.com/in/IshikaKochhar).",
+        diet: "The 'Disease Diet Generator' is an AI-powered web app built with CrewAI, Gemini, and RAG to generate personalized, disease-specific diet plans. <br><a href='https://github.com/Ishikakochhar/disease-diet-generator' target='_blank' style='color:var(--accent-primary); text-decoration:underline;'>View on GitHub ↗</a>",
+        interview: "The 'Interview Buddy' is an automated pre-interview screening bot for recruiters, orchestrating 19 AI agents across 5 crews! It uses CrewAI and Python.",
+        devmentor: "Devmentor is an interactive e-learning platform that helps students build coding and placement skills with daily challenges and mentorship. <br><a href='https://github.com/Ishikakochhar/Online-learning-platform' target='_blank' style='color:var(--accent-primary); text-decoration:underline;'>View on GitHub ↗</a>",
+        staycoza: "StayCoza App is an Android travel booking app allowing users to search, compare, and book hotels and flights, built with Java and Firebase! <br><a href='https://github.com/Ishikakochhar/StayCoza-APP' target='_blank' style='color:var(--accent-primary); text-decoration:underline;'>View on GitHub ↗</a>",
+        back: "Returning to main menu..."
     };
 
     const chatToggle = document.getElementById('chatToggle');
@@ -81,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatOptions = document.getElementById('chatOptions');
 
     let chatInitialized = false;
+    let currentNode = 'main_menu';
 
     if (chatToggle && chatWindow) {
         chatToggle.addEventListener('click', () => {
@@ -99,14 +117,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initChat() {
-        addMessage(chatData.greeting, 'bot');
-        renderOptions(chatData.options);
+        addMessage(chatData.main_menu.text, 'bot');
+        renderOptions(chatData.main_menu.options);
     }
 
     function addMessage(text, sender) {
         const msgDiv = document.createElement('div');
         msgDiv.classList.add('message', sender);
-        msgDiv.textContent = text;
+        msgDiv.innerHTML = text;
         chatMessages.appendChild(msgDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -123,15 +141,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleOptionClick(option) {
-        chatOptions.innerHTML = ''; // Hide options while typing
+        chatOptions.innerHTML = ''; 
         addMessage(option.text, 'user');
 
-        // Simulate typing delay
         setTimeout(() => {
-            addMessage(chatData.responses[option.id], 'bot');
+            if (responses[option.id]) {
+                addMessage(responses[option.id], 'bot');
+            }
             
             setTimeout(() => {
-                renderOptions(chatData.options);
+                currentNode = option.next;
+                if (option.id === 'projects') {
+                    addMessage(chatData[currentNode].text, 'bot');
+                }
+                renderOptions(chatData[currentNode].options);
             }, 800);
         }, 600);
     }
