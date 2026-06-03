@@ -7,15 +7,18 @@
     <meta name="description" content="Portfolio of Ishika Kochhar, a Computer Science student with expertise in AI/ML, App Development, and Web Development.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 <body>
     <!-- Background Orbs -->
-    <div class="bg-orb bg-orb-1"></div>
-    <div class="bg-orb bg-orb-2"></div>
-    <div class="bg-orb bg-orb-3"></div>
+    <div class="orb-container">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+    </div>
 
     <!-- Navbar -->
     <nav id="navbar">
@@ -126,32 +129,31 @@
                 <div class="skill-category hidden float-anim-delay-1">
                     <h3>Programming Languages</h3>
                     <div class="skill-tags">
-                        <span>Python</span>
-                        <span>Dart</span>
-                        <span>SQL</span>
-                        <span>HTML/CSS</span>
-                        <span>JavaScript</span>
+                        <span><i class="devicon-python-plain colored"></i> Python</span>
+                        <span><i class="devicon-dart-plain colored"></i> Dart</span>
+                        <span><i class="devicon-sqldeveloper-plain"></i> SQL</span>
+                        <span><i class="devicon-html5-plain colored"></i> HTML/CSS</span>
+                        <span><i class="devicon-javascript-plain colored"></i> JavaScript</span>
                     </div>
                 </div>
                 <div class="skill-category hidden float-anim-delay-2">
                     <h3>AI & Machine Learning</h3>
                     <div class="skill-tags">
-                        <span>Deep Learning</span>
-                        <span>TensorFlow-Keras</span>
-                        <span>NLP</span>
-                        <span>llama.cpp</span>
-                        <span>Computer Vision</span>
+                        <span><i class="fas fa-brain"></i> Deep Learning</span>
+                        <span><i class="devicon-tensorflow-original colored"></i> TensorFlow/Keras</span>
+                        <span><i class="fas fa-language"></i> NLP</span>
+                        <span><i class="fas fa-eye"></i> Computer Vision</span>
                     </div>
                 </div>
                 <div class="skill-category hidden float-anim-delay-3">
                     <h3>Frameworks & Tools</h3>
                     <div class="skill-tags">
-                        <span>Flutter</span>
-                        <span>Flask</span>
-                        <span>Git</span>
-                        <span>Firebase</span>
-                        <span>Streamlit</span>
-                        <span>Cloudflare</span>
+                        <span><i class="devicon-flutter-plain colored"></i> Flutter</span>
+                        <span><i class="devicon-flask-original"></i> Flask</span>
+                        <span><i class="devicon-git-plain colored"></i> Git</span>
+                        <span><i class="devicon-firebase-plain colored"></i> Firebase</span>
+                        <span><i class="fas fa-fire"></i> Streamlit</span>
+                        <span><i class="devicon-cloudflare-plain colored"></i> Cloudflare</span>
                     </div>
                 </div>
             </div>
@@ -165,9 +167,9 @@
             <div class="projects-grid">
                 
                 <div class="project-card hidden">
-                    <div class="project-cover cover-ai"><i class="fas fa-brain"></i></div>
                     <div class="project-content">
                         <div class="project-header">
+                            <div class="project-icon"><i class="fas fa-laptop-medical"></i></div>
                             <div class="project-links">
                                 <a href="https://github.com/Ishikakochhar/disease-diet-generator" target="_blank"><i class="fab fa-github"></i></a>
                             </div>
@@ -184,9 +186,9 @@
                 </div>
 
                 <div class="project-card hidden">
-                    <div class="project-cover cover-ai"><i class="fas fa-robot"></i></div>
                     <div class="project-content">
                         <div class="project-header">
+                            <div class="project-icon"><i class="fas fa-robot"></i></div>
                             <div class="project-links">
                                 <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                             </div>
@@ -202,9 +204,9 @@
                 </div>
 
                 <div class="project-card hidden">
-                    <div class="project-cover cover-mobile"><i class="fas fa-plane-departure"></i></div>
                     <div class="project-content">
                         <div class="project-header">
+                            <div class="project-icon"><i class="fas fa-plane-departure"></i></div>
                             <div class="project-links">
                                 <a href="https://github.com/Ishikakochhar/Sustainable-india-heritage-travel-platform" target="_blank"><i class="fab fa-github"></i></a>
                             </div>
@@ -220,9 +222,9 @@
                 </div>
 
                 <div class="project-card hidden">
-                    <div class="project-cover cover-ai"><i class="fas fa-user-check"></i></div>
                     <div class="project-content">
                         <div class="project-header">
+                            <div class="project-icon"><i class="fas fa-user-check"></i></div>
                             <div class="project-links">
                                 <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                             </div>
@@ -238,9 +240,9 @@
                 </div>
 
                 <div class="project-card hidden">
-                    <div class="project-cover cover-mobile"><i class="fas fa-graduation-cap"></i></div>
                     <div class="project-content">
                         <div class="project-header">
+                            <div class="project-icon"><i class="fas fa-graduation-cap"></i></div>
                             <div class="project-links">
                                 <a href="https://github.com/Ishikakochhar/All-Rounder-TeachingApp" target="_blank"><i class="fab fa-github"></i></a>
                             </div>
@@ -256,9 +258,9 @@
                 </div>
 
                 <div class="project-card hidden">
-                    <div class="project-cover cover-web"><i class="fas fa-book"></i></div>
                     <div class="project-content">
                         <div class="project-header">
+                            <div class="project-icon"><i class="fas fa-book"></i></div>
                             <div class="project-links">
                                 <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                             </div>
@@ -274,9 +276,9 @@
                 </div>
 
                 <div class="project-card hidden">
-                    <div class="project-cover cover-web"><i class="fas fa-laptop-code"></i></div>
                     <div class="project-content">
                         <div class="project-header">
+                            <div class="project-icon"><i class="fas fa-laptop-code"></i></div>
                             <div class="project-links">
                                 <a href="https://github.com/Ishikakochhar/Online-learning-platform" target="_blank"><i class="fab fa-github"></i></a>
                             </div>
@@ -291,9 +293,9 @@
                 </div>
 
                 <div class="project-card hidden">
-                    <div class="project-cover cover-data"><i class="fas fa-chart-line"></i></div>
                     <div class="project-content">
                         <div class="project-header">
+                            <div class="project-icon"><i class="fas fa-chart-line"></i></div>
                             <div class="project-links">
                                 <a href="https://github.com/Ishikakochhar/Startup-trend-in-India-analysis" target="_blank"><i class="fab fa-github"></i></a>
                             </div>
@@ -309,9 +311,9 @@
                 </div>
 
                 <div class="project-card hidden">
-                    <div class="project-cover cover-mobile"><i class="fas fa-hotel"></i></div>
                     <div class="project-content">
                         <div class="project-header">
+                            <div class="project-icon"><i class="fas fa-hotel"></i></div>
                             <div class="project-links">
                                 <a href="https://github.com/Ishikakochhar/StayCoza-APP" target="_blank"><i class="fab fa-github"></i></a>
                             </div>
@@ -327,9 +329,9 @@
                 </div>
 
                 <div class="project-card hidden">
-                    <div class="project-cover cover-ai"><i class="fas fa-smile"></i></div>
                     <div class="project-content">
                         <div class="project-header">
+                            <div class="project-icon"><i class="fas fa-smile"></i></div>
                             <div class="project-links">
                                 <a href="https://github.com/Ishikakochhar/Emotion-Age-and-Gender-Detection" target="_blank"><i class="fab fa-github"></i></a>
                             </div>
@@ -369,7 +371,9 @@
 
     <!-- Footer -->
     <footer>
-        <p>Designed & Built by Ishika Kochhar &copy; 2026</p>
+        <div class="container">
+            <p>Designed & Built by Ishika Kochhar &copy; 2026</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>

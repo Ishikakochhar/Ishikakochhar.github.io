@@ -30,8 +30,20 @@ body {
     background-color: var(--bg-main);
     color: var(--text-main);
     line-height: 1.6;
-    overflow-x: hidden;
     position: relative;
+    overflow-x: hidden;
+}
+
+/* Orb Container to fix overflow causing blank space below footer */
+.orb-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, .logo {
@@ -54,7 +66,6 @@ ul {
     border-radius: 50%;
     filter: blur(100px);
     opacity: 0.15;
-    z-index: -1;
     animation: float-orb 15s infinite alternate ease-in-out;
 }
 
@@ -547,14 +558,20 @@ ul {
     padding: 0.6rem 1.2rem;
     border-radius: 25px;
     font-size: 0.95rem;
-    color: var(--text-muted);
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
     transition: var(--transition);
+}
+
+.skill-tags span i {
+    font-size: 1.2rem;
 }
 
 .skill-tags span:hover {
     background: rgba(59, 130, 246, 0.15);
     border-color: var(--accent-primary);
-    color: white;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(59,130,246,0.3);
 }
@@ -567,58 +584,39 @@ ul {
 }
 
 .project-card {
-    background: var(--bg-secondary);
+    background: var(--glass-bg);
     border-radius: 16px;
     border: 1px solid rgba(255,255,255,0.08);
     transition: var(--transition);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    position: relative;
+    padding: 2.5rem;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: var(--transition);
 }
 
 .project-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border-color: rgba(255,255,255,0.15);
 }
 
-.project-cover {
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    color: rgba(255,255,255,0.8);
-    position: relative;
-    overflow: hidden;
-}
-
-.project-cover::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background: linear-gradient(to top, var(--bg-secondary), transparent);
-}
-
-/* Cover Gradients */
-.cover-ai {
-    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
-}
-.cover-web {
-    background: linear-gradient(135deg, #3b82f6, #0ea5e9);
-}
-.cover-mobile {
-    background: linear-gradient(135deg, #10b981, #06b6d4);
-}
-.cover-data {
-    background: linear-gradient(135deg, #f43f5e, #f97316);
+.project-card:hover::before {
+    opacity: 1;
 }
 
 .project-content {
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -626,30 +624,28 @@ ul {
 
 .project-header {
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.project-icon i {
+    font-size: 2.5rem;
+    color: var(--accent-primary);
 }
 
 .project-links a {
-    font-size: 1.4rem;
-    color: var(--text-main);
-    background: rgba(255,255,255,0.1);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    margin-left: 1rem;
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    transition: var(--transition);
 }
 
 .project-links a:hover {
-    background: var(--accent-primary);
-    transform: translateY(-3px);
+    color: var(--accent-primary);
 }
 
 .project-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
     color: white;
 }
@@ -668,10 +664,10 @@ ul {
 }
 
 .project-tech li {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--accent-primary);
     font-family: 'Outfit', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .more-projects {
@@ -716,11 +712,11 @@ ul {
 /* --- Footer --- */
 footer {
     text-align: center;
-    padding: 3rem 0;
+    padding: 2rem 0;
     border-top: 1px solid var(--glass-border);
     color: var(--text-muted);
     font-size: 1rem;
-    background: rgba(0,0,0,0.2);
+    background: var(--bg-main); /* Match body to prevent weird visual breaks */
 }
 
 /* --- Animations & Utilities --- */
