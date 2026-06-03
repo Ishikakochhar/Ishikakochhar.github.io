@@ -426,6 +426,10 @@ ul {
     gap: 1.5rem;
 }
 
+.stat-card:last-child {
+    grid-column: span 2;
+}
+
 .stat-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
