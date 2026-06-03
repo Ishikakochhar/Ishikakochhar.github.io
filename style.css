@@ -249,7 +249,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 150px 10% 60px; /* Fixed padding to start exactly below navbar */
+    padding: 110px 10% 60px; /* Reduced top padding */
     position: relative;
     overflow: hidden;
 }
