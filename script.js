@@ -56,4 +56,83 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const hiddenElements = document.querySelectorAll('.hidden');
     hiddenElements.forEach((el) => observer.observe(el));
+
+    // --- Selene Chatbot Logic ---
+    const chatData = {
+        greeting: "Hi there! I'm Selene, Ishika's virtual assistant. How can I help you today?",
+        options: [
+            { id: "who", text: "Who is Ishika?" },
+            { id: "skills", text: "What are her skills?" },
+            { id: "latest", text: "Latest project?" },
+            { id: "contact", text: "How to contact her?" }
+        ],
+        responses: {
+            who: "Ishika is a B.Tech Computer Science student at BML Munjal University, graduating in 2026. She's passionate about building intelligent, scalable solutions using AI and modern web frameworks!",
+            skills: "She specializes in Python, Flutter, JavaScript, and HTML/CSS. Her real superpower is AI & Machine Learning, using tools like TensorFlow, CrewAI, and Gemini to build smart applications.",
+            latest: "Her latest major project is the 'Disease Diet Generator', an AI-powered web app that creates personalized diet plans using RAG and CrewAI! You can check it out in her Projects section.",
+            contact: "You can reach out to her via email at kochharishika@gmail.com, or connect with her on LinkedIn (linkedin.com/in/IshikaKochhar)."
+        }
+    };
+
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatOptions = document.getElementById('chatOptions');
+
+    let chatInitialized = false;
+
+    if (chatToggle && chatWindow) {
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.remove('hidden-chat');
+            chatToggle.style.transform = 'scale(0)';
+            if (!chatInitialized) {
+                initChat();
+                chatInitialized = true;
+            }
+        });
+
+        closeChat.addEventListener('click', () => {
+            chatWindow.classList.add('hidden-chat');
+            chatToggle.style.transform = 'scale(1)';
+        });
+    }
+
+    function initChat() {
+        addMessage(chatData.greeting, 'bot');
+        renderOptions(chatData.options);
+    }
+
+    function addMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('message', sender);
+        msgDiv.textContent = text;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function renderOptions(options) {
+        chatOptions.innerHTML = '';
+        options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.classList.add('chat-option-btn');
+            btn.textContent = opt.text;
+            btn.addEventListener('click', () => handleOptionClick(opt));
+            chatOptions.appendChild(btn);
+        });
+    }
+
+    function handleOptionClick(option) {
+        chatOptions.innerHTML = ''; // Hide options while typing
+        addMessage(option.text, 'user');
+
+        // Simulate typing delay
+        setTimeout(() => {
+            addMessage(chatData.responses[option.id], 'bot');
+            
+            setTimeout(() => {
+                renderOptions(chatData.options);
+            }, 800);
+        }, 600);
+    }
 });
