@@ -75,6 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: "interview", text: "Interview Buddy", next: "projects_menu" },
                 { id: "devmentor", text: "Devmentor", next: "projects_menu" },
                 { id: "staycoza", text: "StayCoza App", next: "projects_menu" },
+                { id: "personality", text: "Personality Trait Prediction", next: "projects_menu" },
+                { id: "library", text: "Library System", next: "projects_menu" },
+                { id: "emotion", text: "Emotion & Gender Detection", next: "projects_menu" },
                 { id: "back", text: "⬅️ Go Back", next: "main_menu" }
             ]
         }
@@ -88,6 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
         interview: "The 'Interview Buddy' is an automated pre-interview screening bot for recruiters, orchestrating 19 AI agents across 5 crews! It uses CrewAI and Python.",
         devmentor: "Devmentor is an interactive e-learning platform that helps students build coding and placement skills with daily challenges and mentorship. <br><a href='https://github.com/Ishikakochhar/Online-learning-platform' target='_blank' style='color:var(--accent-primary); text-decoration:underline;'>View on GitHub ↗</a>",
         staycoza: "StayCoza App is an Android travel booking app allowing users to search, compare, and book hotels and flights, built with Java and Firebase! <br><a href='https://github.com/Ishikakochhar/StayCoza-APP' target='_blank' style='color:var(--accent-primary); text-decoration:underline;'>View on GitHub ↗</a>",
+        personality: "Personality Trait Prediction is a multi-modal deep learning model to predict 'Big Five' personality traits from interview videos and generate AI-driven candidate summaries.",
+        library: "The Library Management System is a comprehensive Python/Flask system for a university library featuring locker token generation, cabin booking, and automated email delivery.",
+        emotion: "Emotion & Gender Detection analyzes facial images to predict emotion, age, and gender, offering personalized music suggestions using Google Gemini Pro and CNNs. <br><a href='https://github.com/Ishikakochhar/Emotion-Age-and-Gender-Detection' target='_blank' style='color:var(--accent-primary); text-decoration:underline;'>View on GitHub ↗</a>",
         back: "Returning to main menu..."
     };
 
