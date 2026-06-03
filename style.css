@@ -912,12 +912,17 @@ footer {
 }
 
 /* --- Electric Border Effect --- */
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
 .stat-card,
 .skill-category,
 .project-card {
     position: relative;
-    overflow: hidden;
-    background: transparent;
+    background: var(--glass-bg);
     border: none;
     z-index: 1;
 }
@@ -927,48 +932,56 @@ footer {
 .project-card::before {
     content: '';
     position: absolute;
-    width: 250%;
-    height: 250%;
-    top: -75%;
-    left: -75%;
-    background: conic-gradient(from 0deg, transparent 70%, var(--accent-primary) 100%);
-    animation: spinElectric 4s linear infinite;
-    z-index: -2;
-    opacity: 0.5; /* Subtle constant glow */
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px; /* Border thickness */
+    background: conic-gradient(from var(--angle), transparent 60%, var(--accent-primary) 85%, #fff 95%, var(--accent-primary) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: spinElectric 2.5s linear infinite;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Extra electric glow on hover */
+.stat-card::after,
+.skill-category::after,
+.project-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(from var(--angle), transparent 60%, var(--accent-primary) 85%, #fff 95%, var(--accent-primary) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    filter: blur(8px);
+    animation: spinElectric 2.5s linear infinite;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
     transition: opacity 0.3s;
 }
 
 .stat-card:hover::before,
 .skill-category:hover::before,
 .project-card:hover::before {
-    opacity: 1; /* Brightens on hover */
-    animation: spinElectric 2s linear infinite; /* Spins faster on hover */
+    opacity: 1;
+    animation: spinElectric 1s linear infinite;
 }
 
-.stat-card::after,
-.skill-category::after,
-.project-card::after {
-    content: '';
-    position: absolute;
-    inset: 1px; /* 1px border thickness */
-    background: var(--glass-bg); /* Dark opaque background */
-    border-radius: inherit;
-    z-index: -1;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-}
-
-/* Ensure content stays above the pseudo elements */
-.stat-card > *,
-.skill-category > *,
-.project-content {
-    position: relative;
-    z-index: 2;
+.stat-card:hover::after,
+.skill-category:hover::after,
+.project-card:hover::after {
+    opacity: 0.8;
+    animation: spinElectric 1s linear infinite;
 }
 
 @keyframes spinElectric {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from { --angle: 0deg; }
+    to { --angle: 360deg; }
 }
 
 /* --- Animations & Utilities --- */
